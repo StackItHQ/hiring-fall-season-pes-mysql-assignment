@@ -63,7 +63,7 @@ All the best ✨.
 ## Video
 
 <video src="./Demo.mp4" controls="controls" style="max-width: 100%;">
-    Your browser does not support the video tag.
+    
 </video>
 
 ## Approach 
@@ -78,3 +78,8 @@ All the best ✨.
 
 * How to Synchronize between google sheet and database ,then figured out the google sheet api's to get data , timestamp and also updating the google sheet.
 * Faced challenges to parse the json file got from google sheet api's ,it took some time to figure out how to parse the data.
+
+## Run
+
+* chmod +x ./schedule_script.sh
+* ./schedule_script.sh
