@@ -59,3 +59,22 @@ All the best ✨.
 
 ## Developer's Section
 *Add your video here, and your approach to the problem (optional). Leave some comments for us here if you want, we will be reading this :)*
+
+## Video
+
+<video src="./Demo.mp4" controls="controls" style="max-width: 100%;">
+    Your browser does not support the video tag.
+</video>
+
+## Approach 
+
+* First I figured out how to get the spreadSheet data using Api's and  and parse it .
+* Dynamically I am creating and altering the database schema based on the columns in my sheet.
+* And also updatating the new values in the database when the values gets changed in my sheet.
+* Based on the  timestamp when the google sheet is updated the timestamp of google sheet is latest so i am updating it to database.
+* And when the database is updated the time stamp of the db will be latest so will update the sheet.
+
+## Challenges
+
+* How to Synchronize between google sheet and database ,then figured out the google sheet api's to get data , timestamp and also updating the google sheet.
+* Faced challenges to parse the json file got from google sheet api's ,it took some time to figure out how to parse the data.
