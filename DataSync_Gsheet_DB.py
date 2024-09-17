@@ -11,10 +11,10 @@ class RealTimeSync:
     def __init__(self):
         self.table_name = 'sheetData'
 
-        # Path to your credentials JSON file
-        self.CREDENTIALS_FILE = 'basic-fact-433912-p9-1a7027a7a3c7.json'
+        # Path to your credentials JSON file obtained from google sheet
+        self.CREDENTIALS_FILE = 'path to your credentials JSON file '
+        
         # Define the scope and authenticate with the credentials file
-
         self.SCOPES = ["https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive"]
 
         self.creds = Credentials.from_service_account_file(self.CREDENTIALS_FILE, scopes=self.SCOPES)
@@ -22,7 +22,7 @@ class RealTimeSync:
         self.client = client = gspread.authorize(self.creds)
 
         # Open the Google Sheet using the sheet ID from the URL
-        self.spreadsheet_id = '17ueFc6iwqs7A1yMNXXrcT_CLtQhTIbtvJZnoFrzePgw'
+        self.spreadsheet_id = 'your_spreadsheet_id'
 
         self.sheet = client.open_by_key(self.spreadsheet_id).sheet1  # Open the first sheet
 
@@ -30,11 +30,12 @@ class RealTimeSync:
         self.drive_service = build('drive', 'v3', credentials=self.creds)
 
         # Database connection 
+        #Changes the config as mentioned
         self.db = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Nishanthsep#3",
-            database="googleSheet"
+            password="your_password",
+            database="your_databaseName"
         )
 
         self.cursor = self.db.cursor()
@@ -319,10 +320,11 @@ class RealTimeSync:
 
         sheetRows = self.sanitize_rows(sheetRows, empty_string_indices)
 
+        #If Removed all the rows in sheet remove the table
         if len(sheetRows) == 0:
             self.cursor.execute(f"DROP TABLE IF EXISTS {self.table_name}")
 
-        # Check if the table exists
+        # Check if the table does not exists create a new table
         elif table_exists is None:
             # Drop the table if it already exists (optional)
             self.cursor.execute(f"DROP TABLE IF EXISTS {self.table_name}")
@@ -334,8 +336,8 @@ class RealTimeSync:
                  sheetColumns])  + ", `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " \
             "`updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"
 
-            create_table_query = f"CREATE TABLE {self.table_name} ({column_definitions})"
             # Execute the create table query
+            create_table_query = f"CREATE TABLE {self.table_name} ({column_definitions})"
 
             self.cursor.execute(create_table_query)
 
@@ -367,15 +369,15 @@ class RealTimeSync:
 
             print(sheet_timeStamp,max_timestamp)
 
-            # Compare both timestamps and print the later one
-            
+            # Compare both timestamps 
+
+            #if timestamp of sheet is latest update in db
             if  sheet_timeStamp > max_timestamp:
                 self.updateDb(sheetRows,sheetColumns)
 
+            #otherwise update in sheet
             else:
                 self.updateSheetData()
-
-
                 self.db.close()
 
 if __name__ == '__main__':
