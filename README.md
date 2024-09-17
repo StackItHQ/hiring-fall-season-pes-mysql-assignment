@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/AHFn7Vbn)
 # Superjoin Hiring Assignment
 
 ### Welcome to Superjoin's hiring assignment! 🚀
@@ -44,11 +45,6 @@ Once you're done, make sure you **record a video** showing your project working.
 
 We have a checklist at the bottom of this README file, which you should update as your progress with your assignment. It will help us evaluate your project.
 
-- [ ] My code's working just fine! 🥳
-- [ ] I have recorded a video showing it working and embedded it in the README ▶️
-- [ ] I have tested all the normal working cases 😎
-- [ ] I have even solved some edge cases (brownie points) 💪
-- [ ] I added my very planned-out approach to the problem at the end of this README 📜
 
 ## Got Questions❓
 Feel free to check the discussions tab, you might get some help there. Check out that tab before reaching out to us. Also, did you know, the internet is a great place to explore? 😛
@@ -58,4 +54,14 @@ We're available at techhiring@superjoin.ai for all queries.
 All the best ✨.
 
 ## Developer's Section
-*Add your video here, and your approach to the problem (optional). Leave some comments for us here if you want, we will be reading this :)*
+Explanatio Video : https://drive.google.com/file/d/1RQSS8bXQ_7-6AgFMVEhGAkuibdC_Ewlc/view
+
+Approach :
+first i had to figure out how to get data from google sheets. while searching online i came across a youtube video which helped me access data from google sheets. then i had to format the data and add it to the sql database. the connection of the sql was straightforward as i had done it previously. after adding the google sheet data to the sql database i had to perform the inverse task i.e to get data from sql, format it and then append it to google sheets. after completion of syncronization, i had to make it real time which means i had to make it event driven which was the biggest hurdle. to do so i found a method online(gpt) which was to hash the data and compare the hash. i made a table in sql just to store and update the hash. one improvement that can be made to my project is including binary searching algorithm forpinpointing the change and updating it faster.
+
+
+- [👍🏼] My code's working just fine! 🥳
+- [👍🏼] I have recorded a video showing it working and embedded it in the README ▶️
+- [👍🏼] I have tested all the normal working cases 😎
+- [ ] I have even solved some edge cases (brownie points) 💪
+- [👍🏼] I added my very planned-out approach to the problem at the end of this README 📜
